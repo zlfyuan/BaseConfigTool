@@ -22,7 +22,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)addItemLeft:(id)content action:(SEL)action;
 - (void)addItemRight:(id)content action:(SEL)action;
-- (void)dispatch_after:(NSTimeInterval )time handleCommplate:(void(^)())Commplate;
 
 - (void)loadNewData;
 - (void)loadMoreData;

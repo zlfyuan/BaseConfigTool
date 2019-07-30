@@ -85,12 +85,6 @@
     
 }
 
-- (void)dispatch_after:(NSTimeInterval )time handleCommplate:(void(^)(void))Commplate{
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        Commplate();
-    });
-    
-}
 //MARK:  - 控制器跳转
 - (void)push:(UIViewController *)viewController{
     [self.navigationController pushViewController:viewController animated:YES];
