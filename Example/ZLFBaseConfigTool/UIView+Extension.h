@@ -26,7 +26,7 @@ typedef NS_OPTIONS(NSUInteger, UIBorderSideType) {
 };
 
 
-typedef void(^tapCallBlock)(UITapGestureRecognizer *tap);
+typedef void(^tapCallBlock)(UITapGestureRecognizer * _Nonnull tap);
 
 NS_ASSUME_NONNULL_BEGIN
 
