@@ -1,0 +1,6 @@
+framework module ZLFBaseConfigTool {
+  umbrella header "ZLFBaseConfigTool-umbrella.h"
+
+  export *
+  module * { export * }
+}

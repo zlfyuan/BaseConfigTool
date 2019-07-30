@@ -1,0 +1,22 @@
+{
+  "name": "ZLFBaseConfigTool",
+  "version": "0.1.0",
+  "summary": "A short description of ZLFBaseConfigTool.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/1553427003@qq.com/ZLFBaseConfigTool",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "1553427003@qq.com": "zlfyuan1996@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/1553427003@qq.com/ZLFBaseConfigTool.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "ZLFBaseConfigTool/Classes/**/*"
+}
