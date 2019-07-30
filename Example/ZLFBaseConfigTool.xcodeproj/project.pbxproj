@@ -22,6 +22,11 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
+		7FA3B31322F04A3B006B8552 /* UIColor+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA3B31222F04A3B006B8552 /* UIColor+Extension.m */; };
+		7FA3B31622F04A5B006B8552 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA3B31522F04A5B006B8552 /* UIView+Extension.m */; };
+		7FA3B31A22F04AAF006B8552 /* UIFont+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA3B31922F04AAF006B8552 /* UIFont+Extension.m */; };
+		7FA3B31D22F04B33006B8552 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA3B31C22F04B33006B8552 /* UIImage+Extension.m */; };
+		7FA3B32322F04B5F006B8552 /* UIViewController+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA3B32222F04B5F006B8552 /* UIViewController+Extension.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		C855C3AEE60F07B6F42F67FC /* Pods_ZLFBaseConfigTool_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03A4FDAA7C6188D53F2DB917 /* Pods_ZLFBaseConfigTool_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -64,6 +69,16 @@
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7FA3B31122F04A3B006B8552 /* UIColor+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Extension.h"; sourceTree = "<group>"; };
+		7FA3B31222F04A3B006B8552 /* UIColor+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Extension.m"; sourceTree = "<group>"; };
+		7FA3B31422F04A5B006B8552 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		7FA3B31522F04A5B006B8552 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		7FA3B31822F04AAF006B8552 /* UIFont+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIFont+Extension.h"; sourceTree = "<group>"; };
+		7FA3B31922F04AAF006B8552 /* UIFont+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Extension.m"; sourceTree = "<group>"; };
+		7FA3B31B22F04B33006B8552 /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
+		7FA3B31C22F04B33006B8552 /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
+		7FA3B32122F04B5F006B8552 /* UIViewController+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Extension.h"; sourceTree = "<group>"; };
+		7FA3B32222F04B5F006B8552 /* UIViewController+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Extension.m"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E77BFDF798BB809076D61C80 /* Pods-ZLFBaseConfigTool_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZLFBaseConfigTool_Tests.debug.xcconfig"; path = "Target Support Files/Pods-ZLFBaseConfigTool_Tests/Pods-ZLFBaseConfigTool_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		EB3709EBB4A7F308ECFEFB59 /* Pods-ZLFBaseConfigTool_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZLFBaseConfigTool_Example.debug.xcconfig"; path = "Target Support Files/Pods-ZLFBaseConfigTool_Example/Pods-ZLFBaseConfigTool_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -145,6 +160,7 @@
 			children = (
 				6003F59C195388D20070C39A /* ZLFAppDelegate.h */,
 				6003F59D195388D20070C39A /* ZLFAppDelegate.m */,
+				7FA3B31022F049D1006B8552 /* Extension */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* ZLFViewController.h */,
 				6003F5A6195388D20070C39A /* ZLFViewController.m */,
@@ -194,6 +210,23 @@
 				2440FA3010F56B17FF04970F /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		7FA3B31022F049D1006B8552 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				7FA3B31422F04A5B006B8552 /* UIView+Extension.h */,
+				7FA3B31522F04A5B006B8552 /* UIView+Extension.m */,
+				7FA3B31122F04A3B006B8552 /* UIColor+Extension.h */,
+				7FA3B31222F04A3B006B8552 /* UIColor+Extension.m */,
+				7FA3B31B22F04B33006B8552 /* UIImage+Extension.h */,
+				7FA3B31C22F04B33006B8552 /* UIImage+Extension.m */,
+				7FA3B31822F04AAF006B8552 /* UIFont+Extension.h */,
+				7FA3B31922F04AAF006B8552 /* UIFont+Extension.m */,
+				7FA3B32122F04B5F006B8552 /* UIViewController+Extension.h */,
+				7FA3B32222F04B5F006B8552 /* UIViewController+Extension.m */,
+			);
+			name = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,9 +399,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FA3B31622F04A5B006B8552 /* UIView+Extension.m in Sources */,
+				7FA3B31D22F04B33006B8552 /* UIImage+Extension.m in Sources */,
 				6003F59E195388D20070C39A /* ZLFAppDelegate.m in Sources */,
+				7FA3B31A22F04AAF006B8552 /* UIFont+Extension.m in Sources */,
+				7FA3B32322F04B5F006B8552 /* UIViewController+Extension.m in Sources */,
 				6003F5A7195388D20070C39A /* ZLFViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				7FA3B31322F04A3B006B8552 /* UIColor+Extension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

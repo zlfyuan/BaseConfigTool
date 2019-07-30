@@ -31,7 +31,10 @@
     self.isLoadController = NO;
 }
 
-// MARK: 隐藏系统导航栏底部的黑线
+// MARK: - 隐藏系统导航栏底部的黑线
+/**
+ 隐藏导航栏的黑线
+ */
 -(void)useMethodToFindBlackLineAndHind {
     UIImageView *blackLineImageView = [self findHairlineImageViewUnder:self.navigationController.navigationBar];
     //隐藏黑线（在viewWillAppear时隐藏，在viewWillDisappear时显示）
@@ -52,7 +55,14 @@
     return nil;
 }
 
-//MARK:  -  往导航里添加按钮
+//MARK: - 往导航里添加按钮
+
+/**
+ 添加导航按钮
+ 
+ @param content 可以是title 可以image
+ @param action 按钮动作
+ */
 - (void)addItemLeft:(id)content action:(SEL)action{
     if ([content isKindOfClass:[UIImage class]]) {
         self.navigationItem.leftBarButtonItem = ({
@@ -86,6 +96,12 @@
 }
 
 //MARK:  - 控制器跳转
+
+/**
+ 控制器跳转
+ 
+ @param viewController 要跳转的目标控制器
+ */
 - (void)push:(UIViewController *)viewController{
     [self.navigationController pushViewController:viewController animated:YES];
 }
@@ -107,7 +123,7 @@
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
-//MARK:  UITextFieldDelegate
+//MARK: - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
     return YES;
@@ -125,12 +141,12 @@
 }
 
 //MARK:  - 公共方法
-- (void)setUp{}
+- (void)setUI{}
 - (void)loadNewData{}
 - (void)loadMoreData{}
 
 - (void)dealloc{
-    NSLog(@"%@",[self class]);
+    NSLog(@"%@释放",[self class]);
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

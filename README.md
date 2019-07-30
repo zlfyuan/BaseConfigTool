@@ -22,7 +22,7 @@ pod 'ZLFBaseConfigTool'
 
 ## Author
 
-1553427003@qq.com, zlfyuan1996@gmail.com
+zlfyuan1996@gmail.com
 
 ## License
 

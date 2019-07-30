@@ -19,12 +19,8 @@
     self.navigationBar.shadowImage = [UIImage new];
     [self.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     self.navigationBar.translucent = NO;
-    //    self.navigationBar.barTintColor = WHITECOLOR;
     [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor],NSFontAttributeName : [UIFont systemFontOfSize:20]}];
     [self.navigationBar setTintColor:[UIColor blackColor]];
-    
-    //    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60)
-    //                                                         forBarMetrics:UIBarMetricsDefault];
     
     __weak typeof (self) weakSelf = self;
     if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
@@ -34,7 +30,15 @@
     
 }
 
--(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
+/**
+ * 当导航控制器的子控制器需要设置状态栏的时候需调用重写此方法
+ */
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    UIViewController *topVC = self.topViewController;
+    return [topVC preferredStatusBarStyle];
+}
+
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
     if (self.childViewControllers.count > 0){
         viewController.hidesBottomBarWhenPushed = YES;
     }
@@ -55,13 +59,10 @@
     
 }
 
--(void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
     if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.interactivePopGestureRecognizer.enabled = YES;
         
     }
 }
-
-
-
 @end

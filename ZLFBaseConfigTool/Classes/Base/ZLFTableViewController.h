@@ -13,12 +13,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**baseTableview*/
 @property (nonatomic, strong)UITableView *baseTabeleviewPlain;
+
 /**baseTableview*/
 @property (nonatomic, strong)UITableView *baseTabeleviewGrouped;
+
 /**titlesArr*/
 @property (nonatomic, strong)NSMutableArray *dataSources;
+
 /**page 分页 默认为 1*/
 @property (nonatomic, assign) int page;
+
 /**pageSize 每页数量 默认为 10*/
 @property (nonatomic, assign) int pageSize;
 @end
