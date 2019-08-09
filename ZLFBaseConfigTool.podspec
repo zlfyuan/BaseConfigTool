@@ -34,7 +34,7 @@ Pod::Spec.new do |s|
   #   'ZLFBaseConfigTool' => ['ZLFBaseConfigTool/Assets/*.png']
   # }
 
-  s.public_header_files = 'Pod/Classes/ZLFBase.h'
+  # s.public_header_files = 'Pod/Classes/ZLFBase.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
 end
