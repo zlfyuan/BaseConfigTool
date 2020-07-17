@@ -1,14 +1,14 @@
 //
-//  ZYCenterPopView.m
+//  ZLFCenterPopView.m
 //  Pods-ZLFBaseConfigTool_Example
 //
 //  Created by zluof on 2019/7/25.
 //  Copyright © 2019 zluof. All rights reserved.
 //
 
-#import "ZYCenterPopView.h"
+#import "ZLFCenterPopView.h"
 #import "ZLFConstant.h"
-@implementation ZYCenterPopView
+@implementation ZLFCenterPopView
 
 - (instancetype)init
 {

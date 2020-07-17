@@ -1,5 +1,5 @@
 //
-//  ZYBottomPopView.h
+//  ZLFBottomPopView.h
 //  Pods-ZLFBaseConfigTool_Example
 //
 //  Created by zluof on 2019/4/4.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 typedef void(^finishedEvent)(id object);
-@interface ZYBottomPopView : UIView
+@interface ZLFBottomPopView : UIView
 
 /**maskPopView*/
 @property (nonatomic, strong) UIView *maskPopView;

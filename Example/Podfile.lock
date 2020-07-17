@@ -1,5 +1,5 @@
 PODS:
-  - ZLFBaseConfigTool (0.1.0)
+  - ZLFBaseConfigTool (0.1.7)
 
 DEPENDENCIES:
   - ZLFBaseConfigTool (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ZLFBaseConfigTool: f13c1b13b5d140f7d37cb7c7e7c4dba6519dc0ea
+  ZLFBaseConfigTool: 0fc72ed3b52429a020b38da760165cc16e815f21
 
 PODFILE CHECKSUM: b0dfea5ba0e4f62b4b8807e8f20c4a6a83df280b
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.9.3
