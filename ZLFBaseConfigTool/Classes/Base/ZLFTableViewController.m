@@ -24,13 +24,13 @@
 - (UITableView *)baseTabeleviewGrouped
 {
     if (_baseTabeleviewGrouped ==nil) {
-        _baseTabeleviewGrouped = [[UITableView alloc]initWithFrame:(CGRect){0,0,SWIDTH,SHEIGHT - navgationBarHeight}  style:UITableViewStyleGrouped];
+        _baseTabeleviewGrouped = [[UITableView alloc]initWithFrame:CGRectZero  style:UITableViewStyleGrouped];
         _baseTabeleviewGrouped.delegate = self;
         _baseTabeleviewGrouped.dataSource = self;
-        _baseTabeleviewGrouped.separatorColor = LINECOLOR;
+        _baseTabeleviewGrouped.separatorColor = [UIColor colorWithRed:247/255 green:247/250 blue:247/250 alpha:1];
         _baseTabeleviewGrouped.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
         _baseTabeleviewGrouped.showsVerticalScrollIndicator = NO;
-        _baseTabeleviewGrouped.backgroundColor = LINECOLOR;
+        _baseTabeleviewGrouped.backgroundColor = [UIColor colorWithRed:247/255 green:247/250 blue:247/250 alpha:1];;
         [self adjustsScrollViewInsets:_baseTabeleviewGrouped controller:self];
         
         [self.view addSubview:_baseTabeleviewGrouped];
@@ -43,13 +43,13 @@
 - (UITableView *)baseTabeleviewPlain
 {
     if (_baseTabeleviewPlain ==nil) {
-        _baseTabeleviewPlain = [[UITableView alloc]initWithFrame:(CGRect){0,0,SWIDTH,SHEIGHT - navgationBarHeight}  style:UITableViewStylePlain];
+        _baseTabeleviewPlain = [[UITableView alloc]initWithFrame:CGRectZero  style:UITableViewStylePlain];
         _baseTabeleviewPlain.delegate = self;
         _baseTabeleviewPlain.dataSource = self;
-        _baseTabeleviewPlain.separatorColor = LINECOLOR;
+        _baseTabeleviewPlain.separatorColor = [UIColor colorWithRed:247/255 green:247/250 blue:247/250 alpha:1];;
         _baseTabeleviewPlain.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
         _baseTabeleviewPlain.showsVerticalScrollIndicator = NO;
-        _baseTabeleviewPlain.backgroundColor = LINECOLOR;
+        _baseTabeleviewPlain.backgroundColor = [UIColor colorWithRed:247/255 green:247/250 blue:247/250 alpha:1];;
         [self adjustsScrollViewInsets:_baseTabeleviewPlain controller:self];
         [self.view addSubview:_baseTabeleviewPlain];
     }
@@ -84,9 +84,9 @@
     return [[UIView alloc] init];
 }
 
-- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
-    return YES;
-}
+//- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
+//    return YES;
+//}
 
 //- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView{
 //    return [UIImage imageNamed:@"wechat money"];

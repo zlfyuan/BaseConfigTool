@@ -14,8 +14,14 @@
     CGFloat scale_device = [UIScreen mainScreen].bounds.size.width / 750;
     return [UIFont systemFontOfSize:scale_device * fontSize];
 }
+
 + (UIFont *)systemblodScaleFont:(CGFloat)fontSize{
     CGFloat scale_device = [UIScreen mainScreen].bounds.size.width / 750;
     return [UIFont boldSystemFontOfSize:scale_device * fontSize];
+}
+
++ (UIFont *)systemSemiboldScaleFont:(CGFloat)fontSize{
+    CGFloat scale_device = [UIScreen mainScreen].bounds.size.width / 750;
+    return [UIFont systemFontOfSize:scale_device * fontSize weight:UIFontWeightSemibold];
 }
 @end

@@ -27,7 +27,6 @@
         self.interactivePopGestureRecognizer.delegate = weakSelf;
         self.delegate = weakSelf;
     }
-    
 }
 
 /**
@@ -62,7 +61,6 @@
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
     if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.interactivePopGestureRecognizer.enabled = YES;
-        
     }
 }
 @end
