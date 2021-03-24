@@ -10,46 +10,61 @@
 
 @implementation NSDate (Extension)
 
-#define force_inline __inline__ __attribute__((always_inline))
-
-static force_inline NSDateComponents *dateComponets(NSDate *date,NSCalendarUnit component){
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSDateComponents *components = [gregorian components:component fromDate:date];
-    return components;
+- (NSInteger)year {
+    return [self dateComponets:NSCalendarUnitYear].year;
 }
 
-+ (NSString *)defaultFormater{
-    return @"yyyy-MM-dd HH:mm:ss";
+- (NSInteger)month {
+    return [self dateComponets:NSCalendarUnitMonth].month;
 }
 
-- (NSInteger )year{
-    return dateComponets(self,NSCalendarUnitYear).year;
+- (NSInteger)day {
+    return [self dateComponets:NSCalendarUnitDay].day;
 }
 
-- (NSInteger )month{
-    return dateComponets(self,NSCalendarUnitYear).month;
+- (NSInteger)hour {
+    return [self dateComponets:NSCalendarUnitYear].year;
 }
 
-- (NSInteger )day{
-    return dateComponets(self,NSCalendarUnitYear).day;
+- (NSInteger)minute {
+    return [self dateComponets:NSCalendarUnitMinute].minute;
 }
 
-- (NSInteger )hour{
-    return dateComponets(self,NSCalendarUnitYear).hour;
+- (NSInteger)second {
+    return [self dateComponets:NSCalendarUnitSecond].second;
 }
 
-- (NSInteger )minute{
-    return dateComponets(self,NSCalendarUnitYear).minute;
+/// 是否为今天
+- (BOOL)isToday {
+    NSDate *nowDate = [NSDate date];
+    NSDate *selfDate = self;
+    return (selfDate.year == nowDate.year) &&
+    (self.month == nowDate.month) &&
+    (selfDate.day == nowDate.day);
 }
 
-- (NSInteger )second{
-    return dateComponets(self,NSCalendarUnitYear).second;
+/// 是否为昨天
+- (BOOL)isYesterday {
+    NSDate *nowDate = [NSDate date];
+    NSDate *selfDate = self;
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *cmps = [calendar components:NSCalendarUnitDay
+                                         fromDate:selfDate
+                                           toDate:nowDate options:0];
+    return cmps.day == 1;
+}
+
+/// 是否为今年
+- (BOOL)isThisYear {
+    NSDate *nowDate = [NSDate date];
+    NSDate *selfDate = self;
+    return (selfDate.year == nowDate.year);
 }
 
 /// 解析时间 默认为Asia/Beijing 时区 格式化 date
 /// @param formater 默认样式 “yyyy-MM-dd HH:mm:ss”
 /// @return 时间格式字符串
-- (NSString *)parsingFormater:(NSString *__nullable)formater{
+- (NSString *)parsingFormater:(NSString *__nullable)formater {
     NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
     [formatter setDateFormat:formater ? : [NSDate defaultFormater]];
     formatter.timeZone = [NSTimeZone timeZoneWithName:@"Asia/Beijing"];
@@ -62,7 +77,7 @@ static force_inline NSDateComponents *dateComponets(NSDate *date,NSCalendarUnit 
 /// @param formater  默认样式 “yyyy-MM-dd HH:mm:ss”
 /// @param time 秒
 /// @return 字符串"yyyy-MM-dd HH:mm:ss"
-+ (NSString *)parsingTimeFormater:(NSString *)formater time:(NSInteger )time{
++ (NSString *)parsingTimeFormater:(NSString *)formater time:(NSInteger)time {
     return @"未实现";
 }
 
@@ -70,7 +85,8 @@ static force_inline NSDateComponents *dateComponets(NSDate *date,NSCalendarUnit 
 /// @param timeStamp 时间戳
 /// @param formater  默认样式 “yyyy-MM-dd HH:mm:ss”
 /// @return 时间字符串
-+ (NSString *)dateStringWithTimeStamp:(NSTimeInterval )timeStamp formater:(NSString *__nullable)formater{
++ (NSString *)dateStringWithTimeStamp:(NSTimeInterval)timeStamp
+                             formater:(NSString *__nullable)formater {
     // 时间戳timeStamp如果是精确到毫秒要/1000
     NSTimeInterval time = timeStamp;
     if (@(timeStamp).stringValue.length == 13) {
@@ -87,10 +103,13 @@ static force_inline NSDateComponents *dateComponets(NSDate *date,NSCalendarUnit 
 /// @param timeStr 时间字符串
 /// @param timeStrFormater 类似 “yyyy-MM-dd HH:mm:ss”
 /// @return 时间戳 NSTimeInterval
-+ (NSTimeInterval )dateTimestampWithDateStr:(NSString *__nonnull)timeStr timeStrFormater:(NSString *__nonnull)timeStrFormater{
-    NSDate *date = [NSDate initDateParsingTimeStr:timeStr formater:timeStrFormater];
++ (NSTimeInterval )dateTimestampWithDateStr:(NSString *__nonnull)timeStr
+                            timeStrFormater:(NSString *__nonnull)timeStrFormater {
+    NSDate *date = [NSDate initDateParsingTimeStr:timeStr
+                                         formater:timeStrFormater];
     // 字符串转成时间戳,精确到毫秒*1000
-    NSString *timeStamp = [NSString stringWithFormat:@"%ld", (long)[date timeIntervalSince1970]*1000];
+    NSString *timeStamp = [NSString stringWithFormat:@"%ld",
+                           (long)[date timeIntervalSince1970]*1000];
     return [timeStamp integerValue];
 }
 
@@ -98,7 +117,8 @@ static force_inline NSDateComponents *dateComponets(NSDate *date,NSCalendarUnit 
 /// @param timeStr 时间格式的字符串  ”2020-09-10-20-13“.....
 /// @param formater  默认样式 “yyyy-MM-dd HH:mm:ss”
 /// @return NSDate
-+ (NSDate *)initDateParsingTimeStr:(NSString *)timeStr formater:(NSString *__nullable)formater{
++ (NSDate *)initDateParsingTimeStr:(NSString *)timeStr
+                          formater:(NSString *__nullable)formater {
     NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
     [formatter setDateFormat:formater ? : [NSDate defaultFormater]];
     formatter.timeZone = [NSTimeZone timeZoneWithName:@"Asia/Beijing"];
@@ -113,12 +133,19 @@ static force_inline NSDateComponents *dateComponets(NSDate *date,NSCalendarUnit 
 /// @param formater  默认样式 “yyyy-MM-dd HH:mm:ss”
 /// @param type 需要比较的类型 年 月 日 时 分 秒
 /// @Return 年 | 月 | 日 | 时 | 分 | 秒
-+ (NSInteger )compareWithDate:(NSDate*)date withDate:(NSDate*)anotherDate formater:(NSString *__nullable)formater type:(NSCalendarUnit )type{
++ (NSInteger )compareWithDate:(NSDate *)date withDate:(NSDate *)anotherDate
+                     formater:(NSString *__nullable)formater
+                         type:(NSCalendarUnit)type {
     
-    NSCalendar *gregorian = [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSCalendar *gregorian = [[NSCalendar alloc]
+                             initWithCalendarIdentifier:
+                             NSCalendarIdentifierGregorian];
     //年、月、日、时、分、秒、周等等都可以
     NSUInteger unitFlags = type;
-    NSDateComponents *comps = [gregorian components:unitFlags fromDate:date toDate:anotherDate options:NSCalendarWrapComponents];
+    NSDateComponents *comps = [gregorian components:unitFlags
+                                           fromDate:date
+                                             toDate:anotherDate
+                                            options:NSCalendarWrapComponents];
     NSInteger typeValue = 0;
     switch (type) {
         case NSCalendarUnitYear:
@@ -145,4 +172,15 @@ static force_inline NSDateComponents *dateComponets(NSDate *date,NSCalendarUnit 
     return typeValue;
 }
 
+- (NSDateComponents *)dateComponets:(NSCalendarUnit)component {
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:
+                             NSCalendarIdentifierGregorian];
+    NSDateComponents *components = [gregorian components:component
+                                                fromDate:self];
+    return components;
+}
+
++ (NSString *)defaultFormater {
+    return @"yyyy-MM-dd HH:mm:ss";
+}
 @end
