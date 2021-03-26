@@ -10,32 +10,75 @@
 
 @implementation UIColor (Extension)
 
-+ (UIColor *)colorWithHex:(NSString *)string
-{
-    NSString *cleanString = [string stringByReplacingOccurrencesOfString:@"#" withString:@""];
-    if([cleanString length] == 3) {
-        cleanString = [NSString stringWithFormat:@"%@%@%@%@%@%@",
-                       [cleanString substringWithRange:NSMakeRange(0, 1)],[cleanString substringWithRange:NSMakeRange(0, 1)],
-                       [cleanString substringWithRange:NSMakeRange(1, 1)],[cleanString substringWithRange:NSMakeRange(1, 1)],
-                       [cleanString substringWithRange:NSMakeRange(2, 1)],[cleanString substringWithRange:NSMakeRange(2, 1)]];
+
+/// 进制颜色转化
+/// @param hexString 类似 "#ffffff" "0x3f33fe"
++ (UIColor *)colorWithHexString:(NSString *)hexString {
+    //去除空格
+    NSString *cString = [[hexString stringByTrimmingCharactersInSet:
+                          [NSCharacterSet whitespaceAndNewlineCharacterSet]]
+                         uppercaseString];
+    //把开头截取
+    if ([cString hasPrefix:@"0X"]) cString = [cString substringFromIndex:2];
+    if ([cString hasPrefix:@"#"]) cString = [cString substringFromIndex:1];
+    //6位或8位(带透明度)
+    if ([cString length] < 6) {
+        return nil;
     }
-    if([cleanString length] == 6) {
-        cleanString = [cleanString stringByAppendingString:@"ff"];
+    //取出透明度、红、绿、蓝
+    unsigned int a, r, g, b;
+    NSRange range;
+    range.location = 0;
+    range.length = 2;
+    if (cString.length == 8) {
+        //a
+        NSString *aString = [cString substringWithRange:range];
+        //r
+        range.location = 2;
+        NSString *rString = [cString substringWithRange:range];
+        //g
+        range.location = 4;
+        NSString *gString = [cString substringWithRange:range];
+        //b
+        range.location = 6;
+        NSString *bString = [cString substringWithRange:range];
+        
+        [[NSScanner scannerWithString:aString] scanHexInt:&a];
+        [[NSScanner scannerWithString:rString] scanHexInt:&r];
+        [[NSScanner scannerWithString:gString] scanHexInt:&g];
+        [[NSScanner scannerWithString:bString] scanHexInt:&b];
+        
+        return [UIColor colorWithRed:(r / 255.0f)
+                               green:(g / 255.0f)
+                                blue:(b / 255.0f)
+                               alpha:(a / 255.0f)];
+    } else {
+        //r
+        NSString *rString = [cString substringWithRange:range];
+        //g
+        range.location = 2;
+        NSString *gString = [cString substringWithRange:range];
+        //b
+        range.location = 4;
+        NSString *bString = [cString substringWithRange:range];
+        
+        [[NSScanner scannerWithString:rString] scanHexInt:&r];
+        [[NSScanner scannerWithString:gString] scanHexInt:&g];
+        [[NSScanner scannerWithString:bString] scanHexInt:&b];
+        
+        return [UIColor colorWithRed:(r / 255.0f)
+                               green:(g / 255.0f)
+                                blue:(b / 255.0f)
+                               alpha:1.0];
     }
-    
-    unsigned int baseValue;
-    [[NSScanner scannerWithString:cleanString] scanHexInt:&baseValue];
-    
-    float red = ((baseValue >> 24) & 0xFF)/255.0f;
-    float green = ((baseValue >> 16) & 0xFF)/255.0f;
-    float blue = ((baseValue >> 8) & 0xFF)/255.0f;
-    
-    return [UIColor colorWithRed:red green:green blue:blue alpha:1.0];
 }
 
-
-+ (UIColor *)arcColor{
-    return [UIColor colorWithRed:(arc4random_uniform(256))/255.0 green:(arc4random_uniform(256))/255.0 blue:(arc4random_uniform(256))/255.0 alpha:(arc4random_uniform(256))/255.0];
+/// 随机色
++ (UIColor *)arcColor {
+    return [UIColor colorWithRed:(arc4random_uniform(256))/255.0
+                           green:(arc4random_uniform(256))/255.0
+                            blue:(arc4random_uniform(256))/255.0
+                           alpha:(arc4random_uniform(256))/255.0];
 }
 
 @end

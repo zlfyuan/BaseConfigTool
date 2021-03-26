@@ -12,14 +12,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIFont (Extension)
 
-/**
- 参照iphone 6 的 分辨率 的 比例
-
- @param fontSize 字体大小 1px = 2pt
- @return font
- */
 + (UIFont *)systemScaleFont:(CGFloat)fontSize;
+
 + (UIFont *)systemblodScaleFont:(CGFloat)fontSize;
+
++ (UIFont *)systemSemiboldScaleFont:(CGFloat)fontSize;
 @end
 
 NS_ASSUME_NONNULL_END

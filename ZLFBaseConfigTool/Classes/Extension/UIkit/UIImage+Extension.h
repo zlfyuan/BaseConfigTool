@@ -12,11 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIImage (Extension)
 
-- (BOOL)isGIF;
-
 + (UIImage *)sd_animatedGIFNamed:(NSString *)name;
 
 /**
+ 压缩图片体积
  1 byte = 8 bits
  1KiB= 1,024 bytes
  1MiB= 1,048,576 bytes
@@ -26,9 +25,10 @@ NS_ASSUME_NONNULL_BEGIN
  @param maxLength 单位为 bytes
  @return 图片data
  */
-+ (NSData *)zy_compressImage:(UIImage *)image toByte:(NSUInteger)maxLength;
++ (NSData *)compressImage:(UIImage *)image toByte:(NSUInteger)maxLength;
 
 /**
+ 压缩图片体积
  1 byte = 8 bits
  1KiB= 1,024 bytes
  1MiB= 1,048,576 bytes
@@ -37,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param maxLength  单位为 bytes
  @return 图片
  */
-- (UIImage *)zy_compressImagetoByte:(NSUInteger)maxLength;
+- (UIImage *)compressImagetoByte:(NSUInteger)maxLength;
 @end
 
 NS_ASSUME_NONNULL_END

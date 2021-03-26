@@ -15,7 +15,9 @@
     CGFloat scale = [UIScreen mainScreen].scale;
     
     if (scale > 1.0f) {
-        NSString *retinaPath = [[NSBundle mainBundle] pathForResource:[name stringByAppendingString:@"@2x"] ofType:@"gif"];
+        NSString *retinaPath = [[NSBundle mainBundle] pathForResource:
+                                [name stringByAppendingString:@"@2x"]
+                                                               ofType:@"gif"];
         
         NSData *data = [NSData dataWithContentsOfFile:retinaPath];
         
@@ -23,7 +25,8 @@
             return [UIImage sd_animatedGIFWithData:data];
         }
         
-        NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@"gif"];
+        NSString *path = [[NSBundle mainBundle] pathForResource:name
+                                                         ofType:@"gif"];
         
         data = [NSData dataWithContentsOfFile:path];
         
@@ -34,7 +37,8 @@
         return [UIImage imageNamed:name];
     }
     else {
-        NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@"gif"];
+        NSString *path = [[NSBundle mainBundle] pathForResource:name
+                                                         ofType:@"gif"];
         
         NSData *data = [NSData dataWithContentsOfFile:path];
         
@@ -46,16 +50,13 @@
     }
 }
 
-- (BOOL)isGIF {
-    return (self.images != nil);
-}
-
 + (UIImage *)sd_animatedGIFWithData:(NSData *)data {
     if (!data) {
         return nil;
     }
     
-    CGImageSourceRef source = CGImageSourceCreateWithData((__bridge CFDataRef)data, NULL);
+    CGImageSourceRef source =
+    CGImageSourceCreateWithData((__bridge CFDataRef)data, NULL);
     
     size_t count = CGImageSourceGetCount(source);
     
@@ -74,7 +75,9 @@
             
             duration += [self sd_frameDurationAtIndex:i source:source];
             
-            [images addObject:[UIImage imageWithCGImage:image scale:[UIScreen mainScreen].scale orientation:UIImageOrientationUp]];
+            [images addObject:[UIImage imageWithCGImage:image
+                                                  scale:[UIScreen mainScreen].scale
+                                            orientation:UIImageOrientationUp]];
             
             CGImageRelease(image);
         }
@@ -83,7 +86,8 @@
             duration = (1.0f / 10.0f) * count;
         }
         
-        animatedImage = [UIImage animatedImageWithImages:images duration:duration];
+        animatedImage = [UIImage animatedImageWithImages:images
+                                                duration:duration];
     }
     
     CFRelease(source);
@@ -91,28 +95,28 @@
     return animatedImage;
 }
 
-+ (float)sd_frameDurationAtIndex:(NSUInteger)index source:(CGImageSourceRef)source {
++ (float)sd_frameDurationAtIndex:(NSUInteger)index
+                          source:(CGImageSourceRef)source {
     float frameDuration = 0.1f;
-    CFDictionaryRef cfFrameProperties = CGImageSourceCopyPropertiesAtIndex(source, index, nil);
+    CFDictionaryRef cfFrameProperties =
+    CGImageSourceCopyPropertiesAtIndex(source, index, nil);
     NSDictionary *frameProperties = (__bridge NSDictionary *)cfFrameProperties;
-    NSDictionary *gifProperties = frameProperties[(NSString *)kCGImagePropertyGIFDictionary];
+    NSDictionary *gifProperties =
+    frameProperties[(NSString *)kCGImagePropertyGIFDictionary];
     
-    NSNumber *delayTimeUnclampedProp = gifProperties[(NSString *)kCGImagePropertyGIFUnclampedDelayTime];
+    NSNumber *delayTimeUnclampedProp =
+    gifProperties[(NSString *)kCGImagePropertyGIFUnclampedDelayTime];
     if (delayTimeUnclampedProp) {
         frameDuration = [delayTimeUnclampedProp floatValue];
     }
     else {
         
-        NSNumber *delayTimeProp = gifProperties[(NSString *)kCGImagePropertyGIFDelayTime];
+        NSNumber *delayTimeProp =
+        gifProperties[(NSString *)kCGImagePropertyGIFDelayTime];
         if (delayTimeProp) {
             frameDuration = [delayTimeProp floatValue];
         }
     }
-    
-    // Many annoying ads specify a 0 duration to make an image flash as quickly as possible.
-    // We follow Firefox's behavior and use a duration of 100 ms for any frames that specify
-    // a duration of <= 10 ms. See <rdar://problem/7689300> and <http://webkit.org/b/36082>
-    // for more information.
     
     if (frameDuration < 0.011f) {
         frameDuration = 0.100f;
@@ -122,7 +126,7 @@
     return frameDuration;
 }
 
-+ (NSData *)zy_compressImage:(UIImage *)image toByte:(NSUInteger)maxLength{
++ (NSData *)compressImage:(UIImage *)image toByte:(NSUInteger)maxLength {
     // Compress by quality
     CGFloat compression = 1;
     NSData *data = UIImageJPEGRepresentation(image, compression);
@@ -149,8 +153,9 @@
     while (data.length > maxLength && data.length != lastDataLength) {
         lastDataLength = data.length;
         CGFloat ratio = (CGFloat)maxLength / data.length;
-        CGSize size = CGSizeMake((NSUInteger)(resultImage.size.width * sqrtf(ratio)),
-                                 (NSUInteger)(resultImage.size.height * sqrtf(ratio))); // Use NSUInteger to prevent white blank
+        CGSize size =
+        CGSizeMake((NSUInteger)(resultImage.size.width * sqrtf(ratio)),
+                   (NSUInteger)(resultImage.size.height * sqrtf(ratio))); // Use NSUInteger to prevent white blank
         UIGraphicsBeginImageContext(size);
         [resultImage drawInRect:CGRectMake(0, 0, size.width, size.height)];
         resultImage = UIGraphicsGetImageFromCurrentImageContext();
@@ -161,7 +166,7 @@
     return data;
 }
 
-- (UIImage *)zy_compressImagetoByte:(NSUInteger)maxLength{
+- (UIImage *)compressImagetoByte:(NSUInteger)maxLength {
     // Compress by quality
     CGFloat compression = 1;
     NSData *data = UIImageJPEGRepresentation(self, compression);
@@ -188,8 +193,9 @@
     while (data.length > maxLength && data.length != lastDataLength) {
         lastDataLength = data.length;
         CGFloat ratio = (CGFloat)maxLength / data.length;
-        CGSize size = CGSizeMake((NSUInteger)(resultImage.size.width * sqrtf(ratio)),
-                                 (NSUInteger)(resultImage.size.height * sqrtf(ratio))); // Use NSUInteger to prevent white blank
+        CGSize size =
+        CGSizeMake((NSUInteger)(resultImage.size.width * sqrtf(ratio)),
+                   (NSUInteger)(resultImage.size.height * sqrtf(ratio))); // Use NSUInteger to prevent white blank
         UIGraphicsBeginImageContext(size);
         [resultImage drawInRect:CGRectMake(0, 0, size.width, size.height)];
         resultImage = UIGraphicsGetImageFromCurrentImageContext();

@@ -94,10 +94,12 @@
 
 //MARK:  - 添加手势识别器
 static void *gestureKey = &gestureKey;
-- (void)setAddTapGesture:(tapCallBlock)addTapGesture{
-    objc_setAssociatedObject(self, gestureKey, addTapGesture, OBJC_ASSOCIATION_COPY_NONATOMIC);
+- (void)setAddTapGesture:(tapCallBlock)addTapGesture {
+    objc_setAssociatedObject(self, gestureKey, addTapGesture,
+                             OBJC_ASSOCIATION_COPY_NONATOMIC);
     self.userInteractionEnabled = YES;
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap:)];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self action:@selector(tap:)];
     addTapGesture = self.addTapGesture;
     [self addGestureRecognizer:tap];
 }
@@ -127,25 +129,40 @@ static void *gestureKey = &gestureKey;
     /// 左侧
     if (borderType & UIBorderSideTypeLeft) {
         /// 左侧线路径
-        [self.layer addSublayer:[self addLineOriginPoint:CGPointMake(0.f, 0.f) toPoint:CGPointMake(0.0f, view.frame.size.height) color:color borderWidth:borderWidth]];
+        [self.layer addSublayer:[self addLineOriginPoint:CGPointMake(0.f, 0.f)
+                                                 toPoint:CGPointMake(0.0f,
+                                                                     view.frame.size.height)
+                                                   color:color
+                                             borderWidth:borderWidth]];
     }
     
     /// 右侧
     if (borderType & UIBorderSideTypeRight) {
         /// 右侧线路径
-        [view.layer addSublayer:[self addLineOriginPoint:CGPointMake(self.frame.size.width, 0.0f) toPoint:CGPointMake( view.frame.size.width, self.frame.size.height) color:color borderWidth:borderWidth]];
+        [view.layer addSublayer:[self addLineOriginPoint:
+                                 CGPointMake(self.frame.size.width, 0.0f)
+                                                 toPoint:CGPointMake( view.frame.size.width,
+                                                                     self.frame.size.height)
+                                                   color:color
+                                             borderWidth:borderWidth]];
     }
     
     /// top
     if (borderType & UIBorderSideTypeTop) {
         /// top线路径
-        [view.layer addSublayer:[self addLineOriginPoint:CGPointMake(0.0f, 0.0f) toPoint:CGPointMake(view.frame.size.width, 0.0f) color:color borderWidth:borderWidth]];
+        [view.layer addSublayer:[self addLineOriginPoint:CGPointMake(0.0f, 0.0f)
+                                                 toPoint:CGPointMake(view.frame.size.width, 0.0f)
+                                                   color:color
+                                             borderWidth:borderWidth]];
     }
     
     /// bottom
     if (borderType & UIBorderSideTypeBottom) {
         /// bottom线路径
-        [view.layer addSublayer:[self addLineOriginPoint:CGPointMake(0.0f, view.frame.size.height) toPoint:CGPointMake( view.frame.size.width, view.frame.size.height) color:color borderWidth:borderWidth]];
+        [view.layer addSublayer:[self addLineOriginPoint:CGPointMake(0.0f, view.frame.size.height)
+                                                 toPoint:CGPointMake( view.frame.size.width, view.frame.size.height)
+                                                   color:color
+                                             borderWidth:borderWidth]];
     }
     
 }
@@ -171,7 +188,7 @@ static void *gestureKey = &gestureKey;
 }
 
 - (void)showAlertAnimationSuperView:(UIView *)superView
-                            subView:(UIView *)subView{
+                            subView:(UIView *)subView {
     
     UIWindow *window = UIApplication.sharedApplication.delegate.window;
     [window addSubview:superView];
@@ -184,7 +201,10 @@ static void *gestureKey = &gestureKey;
           initialSpringVelocity:0.9
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
-                         superView.backgroundColor = [UIColor colorWithRed:0.f green:0.f blue:0.f alpha:0.5f];
+                         superView.backgroundColor = [UIColor colorWithRed:0.f
+                                                                     green:0.f
+                                                                      blue:0.f
+                                                                     alpha:0.5f];
                          subView.transform = CGAffineTransformMakeScale(1, 1);
                          subView.alpha = 1;
                      } completion:^(BOOL finished) {
@@ -195,8 +215,9 @@ static void *gestureKey = &gestureKey;
 
 
 - (void)dissAlertAnimationSuperView:(UIView *)superView
-                            subView:(UIView *)subView{
-    [UIView animateWithDuration:0.35 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+                            subView:(UIView *)subView {
+    [UIView animateWithDuration:0.35 delay:0
+                        options:UIViewAnimationOptionCurveEaseIn animations:^{
         subView.alpha = 0;
         superView.alpha = 0;
     } completion:^(BOOL finished) {
@@ -212,7 +233,7 @@ static void *gestureKey = &gestureKey;
 -(void)setShadow:(UIColor *)color
    shadowOpacity:(CGFloat )shadowOpacity
     shadowRadius:(CGFloat )shadowRadius
-    shadowOffset:(CGSize )shadowOffset{
+    shadowOffset:(CGSize )shadowOffset {
     self.layer.shadowColor = [UIColor blackColor].CGColor;//阴影的颜色
     self.layer.shadowOpacity =shadowOpacity;//阴影的透明度
     self.layer.shadowRadius = shadowRadius;//阴影的圆角

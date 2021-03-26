@@ -7,7 +7,7 @@
 //
 
 @import XCTest;
-
+#import <ZLFBase.h>
 @interface Tests : XCTestCase
 
 @end
@@ -26,9 +26,11 @@
     [super tearDown];
 }
 
-- (void)testExample
-{
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+- (void)testExample{
+    NSAssert([@"12323230122222222222" isNumber] == YES, @"fail");
+//    NSAssert([@"wifoweh为你微风后卫i额" floatValue] > 0, @"fail");
+//    NSAssert([@"wifoweh为你微风后卫i额" floatValue] == 0, @"fail");
+//    NSAssert([@"wifoweh为你微风后卫i额" floatValue] < 0, @"fail");
 }
 
 @end

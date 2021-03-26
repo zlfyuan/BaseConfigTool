@@ -38,6 +38,8 @@ typedef NS_ENUM(NSInteger,ZYBtnContentStyle){
     ZYBtnContentStyleRight,
 };
 
+/// 自定义UIButton
+/// 可实现 内容位置的调整 文字内容    图片内容
 @interface ZLFImageButton : UIButton
 /**e内容样式*/
 @property (nonatomic, assign) ZYBtnContentStyle contentStyle;

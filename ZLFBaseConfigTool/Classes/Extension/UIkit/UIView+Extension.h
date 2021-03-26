@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  边框类型枚举
 
@@ -28,8 +30,6 @@ typedef NS_OPTIONS(NSUInteger, UIBorderSideType) {
 
 typedef void(^tapCallBlock)(UITapGestureRecognizer * _Nonnull tap);
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface UIView (Extension)
 
 @property (nonatomic, assign) CGFloat z_x;
@@ -43,7 +43,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**单击手势*/
 @property (nonatomic, copy) tapCallBlock addTapGesture;
-
 
 
 /**
@@ -83,6 +82,7 @@ NS_ASSUME_NONNULL_BEGIN
  额外添加一个初始化UI的方法
  */
 - (void)setUI;
+
 /**
  * 设置阴影
  */

@@ -11,17 +11,17 @@
 @implementation UIFont (Extension)
 
 + (UIFont *)systemScaleFont:(CGFloat)fontSize{
-    CGFloat scale_device = [UIScreen mainScreen].bounds.size.width / 750;
+    CGFloat scale_device = [UIScreen mainScreen].bounds.size.width / 375;
     return [UIFont systemFontOfSize:scale_device * fontSize];
 }
 
 + (UIFont *)systemblodScaleFont:(CGFloat)fontSize{
-    CGFloat scale_device = [UIScreen mainScreen].bounds.size.width / 750;
+    CGFloat scale_device = [UIScreen mainScreen].bounds.size.width / 375;
     return [UIFont boldSystemFontOfSize:scale_device * fontSize];
 }
 
 + (UIFont *)systemSemiboldScaleFont:(CGFloat)fontSize{
-    CGFloat scale_device = [UIScreen mainScreen].bounds.size.width / 750;
-    return [UIFont systemFontOfSize:scale_device * fontSize weight:UIFontWeightSemibold];
+    CGFloat scale_device = [UIScreen mainScreen].bounds.size.width / 375;
+    return [UIFont monospacedDigitSystemFontOfSize:scale_device * fontSize weight:UIFontWeightSemibold];
 }
 @end
